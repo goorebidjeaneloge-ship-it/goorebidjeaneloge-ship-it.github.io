@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio de DJEAN-BI GOORE Jules Euloge - Étudiant en TWIN à l'ESATIC.">
+    <title>Jules Euloge DJEAN-BI GOORE | Portfolio</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">Jules.D</div>
+            <ul class="nav-links">
+                <li><a href="#about">À propos</a></li>
+                <li><a href="#projects">Projets</a></li>
+                <li><a href="#certificates">Certificats</a></li>
+                <li><a href="#skills">Compétences</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <!-- Éléments décoratifs en arrière-plan -->
+        <div class="hero-shape shape-1"></div>
+        <div class="hero-shape shape-2"></div>
+
+        <div class="hero-content fade-in">
+            <div class="avatar-container">
+                <img src="https://ui-avatars.com/api/?name=Jules+Euloge&background=e67e22&color=fff&size=150&bold=true" alt="Avatar" class="hero-avatar">
+            </div>
+            <p class="greeting">Bonjour, je suis</p>
+            <h1>DJEAN-BI GOORE <span class="highlight">Jules Euloge</span></h1>
+            <h2>Étudiant en Technologie du Web et Image Numérique (TWIN)</h2>
+            <p class="tagline">Passionné par le développement web et mobile, je construis des solutions numériques utiles, de la Côte d'Ivoire au reste du monde.</p>
+            <div class="cta-buttons">
+                <a href="#projects" class="btn btn-primary">Voir mes projets</a>
+                <a href="#contact" class="btn btn-secondary">Me contacter</a>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <a href="#about" aria-label="Défiler vers le bas">
+                <div class="mouse"></div>
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <section id="about" class="section">
+            <div class="section-container fade-in">
+                <h2 class="section-title">À propos de moi</h2>
+                <div class="about-content">
+                    <p>Titulaire d'un Baccalauréat Série D (2025), je suis actuellement étudiant en deuxième année de Licence (L2) en <strong>Technologie du Web et Image Numérique (TWIN)</strong> à l'<strong>École Supérieure Africaine des TIC (ESATIC)</strong>, à Abidjan, Côte d'Ivoire.</p>
+                    <p>En tant qu'étudiant, je suis dans une phase d'apprentissage intensif et je me passionne pour la création d'applications qui répondent à des problèmes concrets. Je développe mes compétences à travers des projets scolaires et personnels, en cherchant toujours à écrire un code propre et structuré.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section bg-alt">
+            <div class="section-container fade-in">
+                <h2 class="section-title">Mes Projets</h2>
+                <div class="grid projects-grid">
+                    
+                    <!-- Carte Projet 1 -->
+                    <article class="card project-card">
+                        <div class="card-content">
+                            <h3>Xamly</h3>
+                            <p>Application mobile permettant aux élèves et étudiants ivoiriens de trouver des sujets d'examens nationaux (BEPC, BAC, BTS, etc.), avec consultation hors-ligne. Un espace "IA Xamly" est prévu pour aider sur les exercices.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Supabase</span>
+                                <span class="tech-tag">Mobile</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Carte Projet 2 -->
+                    <article class="card project-card">
+                        <div class="card-content">
+                            <h3>Calculateur de Moyenne</h3>
+                            <p>Application web complète automatisant le calcul de moyennes pondérées pour les concours d'entrée à l'ESATIC et l'INP-HB, avec gestion des formules spécifiques à chaque établissement.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Django</span>
+                                <span class="tech-tag">Firebase/Firestore</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Carte Projet 3 -->
+                    <article class="card project-card">
+                        <div class="card-content">
+                            <h3>Coffre-fort Numérique</h3>
+                            <p>Projet scolaire : application de stockage et partage sécurisé de documents administratifs personnels (contexte ivoirien), avec partage par QR code/lien, authentification 2FA, et sauvegarde cloud.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Web</span>
+                                <span class="tech-tag">Sécurité</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Carte Projet 4 -->
+                    <article class="card project-card">
+                        <div class="card-content">
+                            <h3>Gestionnaire de Tâches CLI</h3>
+                            <p>Projet du "Camp d'été FlutterFire 2026" : gestionnaire de tâches en ligne de commande. Utilisation de classes abstraites, héritage, interfaces, génériques, exceptions, persistance JSON et tests unitaires.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Pure Dart</span>
+                                <span class="tech-tag">CLI</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- AJOUTER UN NOUVEAU PROJET ICI : dupliquer ce bloc -->
+                    <!--
+                    <article class="card project-card">
+                        <div class="card-content">
+                            <h3>Titre du projet</h3>
+                            <p>Description courte du projet.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Techno 1</span>
+                                <span class="tech-tag">Techno 2</span>
+                            </div>
+                        </div>
+                    </article>
+                    -->
+                    
+                </div>
+            </div>
+        </section>
+
+        <section id="certificates" class="section">
+            <div class="section-container fade-in">
+                <h2 class="section-title">Mes Certificats</h2>
+                <div class="grid certificates-grid">
+                    
+                    <a href="https://openclassrooms.com/en/course-certificates/7386825826" target="_blank" rel="noopener noreferrer" class="card cert-card">
+                        <div class="cert-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+                        </div>
+                        <div class="cert-info">
+                            <h3>Learn Python Basics</h3>
+                            <p>OpenClassrooms</p>
+                        </div>
+                    </a>
+
+                    <a href="https://openclassrooms.com/en/course-certificates/6885753771" target="_blank" rel="noopener noreferrer" class="card cert-card">
+                        <div class="cert-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+                        </div>
+                        <div class="cert-info">
+                            <h3>Manage Your Code Project With Git and GitHub</h3>
+                            <p>OpenClassrooms</p>
+                        </div>
+                    </a>
+
+                    <a href="https://openclassrooms.com/en/course-certificates/4563716014" target="_blank" rel="noopener noreferrer" class="card cert-card">
+                        <div class="cert-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+                        </div>
+                        <div class="cert-info">
+                            <h3>Build Your First Web Pages With HTML and CSS</h3>
+                            <p>OpenClassrooms</p>
+                        </div>
+                    </a>
+
+                    <a href="https://www.credly.com/badges/c8574f5d-b4e4-47da-8d8c-1b4a59d85aa0/linked_in_profile" target="_blank" rel="noopener noreferrer" class="card cert-card">
+                        <div class="cert-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+                        </div>
+                        <div class="cert-info">
+                            <h3>Apply AI: Update Your Resume</h3>
+                            <p>Cisco</p>
+                        </div>
+                    </a>
+
+                    <a href="https://www.credly.com/badges/0b3449e0-a057-48e2-a6ef-e917a7e15974/linked_in_profile" target="_blank" rel="noopener noreferrer" class="card cert-card">
+                        <div class="cert-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+                        </div>
+                        <div class="cert-info">
+                            <h3>Apply AI: Analyze Customer Reviews</h3>
+                            <p>Cisco</p>
+                        </div>
+                    </a>
+
+                    <a href="https://nextflutter.com/certifications/verify/NF-2026-2B061464" target="_blank" rel="noopener noreferrer" class="card cert-card">
+                        <div class="cert-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+                        </div>
+                        <div class="cert-info">
+                            <h3>Dart Project — CLI Task Manager</h3>
+                            <p>NextFlutter</p>
+                        </div>
+                    </a>
+
+                    <a href="https://freecodecamp.org/certification/fcc-15b19149-d5f3-4a2d-8bec-a33621cf145b/responsive-web-design" target="_blank" rel="noopener noreferrer" class="card cert-card">
+                        <div class="cert-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+                        </div>
+                        <div class="cert-info">
+                            <h3>Legacy Responsive Web Design V8</h3>
+                            <p>freeCodeCamp</p>
+                        </div>
+                    </a>
+
+                    <!-- AJOUTER UN NOUVEAU CERTIFICAT ICI : dupliquer ce bloc -->
+                    <!--
+                    <a href="LIEN_ICI" target="_blank" rel="noopener noreferrer" class="card cert-card">
+                        <div class="cert-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+                        </div>
+                        <div class="cert-info">
+                            <h3>Titre du Certificat</h3>
+                            <p>Organisme</p>
+                        </div>
+                    </a>
+                    -->
+
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="section bg-alt">
+            <div class="section-container fade-in">
+                <h2 class="section-title">Compétences Techniques</h2>
+                <div class="skills-container">
+                    <div class="skill-item">HTML / CSS</div>
+                    <div class="skill-item">Python</div>
+                    <div class="skill-item">Django</div>
+                    <div class="skill-item">SQL</div>
+                    <div class="skill-item">PHP</div>
+                    <div class="skill-item">Dart</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <div class="section-container text-center fade-in">
+                <h2 class="section-title">Contact</h2>
+                <p class="contact-text">Intéressé par mon profil ou envie d'échanger sur un projet ? N'hésitez pas à me retrouver sur mes réseaux.</p>
+                <div class="social-links">
+                    <a href="tel:+2250500300596" class="btn btn-outline">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                        05 00 30 05 96
+                    </a>
+                    <a href="https://github.com/goorebidjeaneloge-ship-it" class="btn btn-outline" target="_blank" rel="noopener noreferrer">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                        GitHub
+                    </a>
+                    <a href="https://www.linkedin.com/in/eloge-goore-bi-djean-b4699039a" class="btn btn-outline" target="_blank" rel="noopener noreferrer">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                        LinkedIn
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 DJEAN-BI GOORE Jules Euloge. Fait avec passion depuis Abidjan.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
