@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio d'Élite & Département des Anomalies Numériques — DJEAN-BI GOORE Jules Euloge, Étudiant TWIN à l'ESATIC.">
+    <title>Jules Euloge DJEAN-BI GOORE | Portfolio d'Élite [ESATIC TWIN]</title>
+    
+    <!-- Polices Rétro-Futuristes & Terminal -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Share+Tech+Mono&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Ligne de progression néon en haut de l'écran -->
+    <div id="scroll-progress-bar"></div>
+
+    <!-- Effet de balayage CRT subtil -->
+    <div class="crt-overlay"></div>
+
+    <!-- Navigation Moderne -->
+    <nav class="scp-nav">
+        <div class="scp-nav-inner">
+            <a href="#" class="scp-brand">
+                <span class="brand-dot"></span>
+                <span>JULES.D // TWIN</span>
+            </a>
+
+            <ul class="scp-nav-links">
+                <li><a href="#dossier-agent" class="scp-nav-link">01. Profil</a></li>
+                <li><a href="#containment" class="scp-nav-link">02. Systèmes</a></li>
+                <li><a href="#clearances" class="scp-nav-link">03. Certifications</a></li>
+                <li><a href="#protocols" class="scp-nav-link">04. Compétences</a></li>
+                <li><a href="#comms" class="scp-nav-link">05. Contact</a></li>
+            </ul>
+
+            <div class="scp-nav-actions">
+                <button id="btn-declassify-all" class="scp-ctrl-btn" title="Révéler toutes les données censurées">
+                    <span>🔓</span> Déclassifier
+                </button>
+                <button id="btn-paper-mode" class="scp-ctrl-btn" title="Basculer vers le mode clair de bureau">
+                    <span>📄</span> Mode Papier
+                </button>
+                <button id="btn-print-cv" class="scp-ctrl-btn" title="Imprimer ou enregistrer le profil en PDF">
+                    <span>🖨️</span> Exporter CV
+                </button>
+                <button id="btn-scp-sound" class="scp-ctrl-btn" title="Activer / Couper l'audio mécanique">
+                    <span>🔊</span> Audio
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- En-tête : Terminal Central de Confinement (Hero) -->
+    <header class="hero-dossier">
+        <div class="terminal-case-frame spotlight-card">
+            
+            <div class="terminal-header">
+                <div class="terminal-header-dots">
+                    <span class="dot-indicator dot-red"></span>
+                    <span class="dot-indicator dot-yellow"></span>
+                    <span class="dot-indicator dot-green"></span>
+                </div>
+                <span>DOSSIER DÉCLASSIFIÉ #ESATIC-2026-TWIN // ABIDJAN</span>
+                <span class="status-pill-live">● EN SERVICE</span>
+            </div>
+
+            <div class="terminal-body">
+                <div class="file-meta-header">
+                    <div>
+                        <div class="researcher-badge">SUJET ENQUÊTÉ // ID: 0225-DJEAN</div>
+                        <h1>DJEAN-BI GOORE Jules Euloge</h1>
+                        <h2>Développeur d'Anomalies Logicielles &bull; L2 TWIN (ESATIC)</h2>
+                    </div>
+                </div>
+
+                <div class="researcher-id-block">
+                    <div class="avatar-mugshot">
+                        <img src="https://ui-avatars.com/api/?name=Jules+Euloge&background=0e121a&color=00f0ff&size=200&bold=true" alt="Photo Jules Euloge">
+                    </div>
+                    <div class="terminal-brief">
+                        <p>
+                            Sujet spécialisé en <span class="redacted" title="Cliquer pour déclassifier">Ingénierie Web et Image Numérique (TWIN)</span>, opérant au sein du site sécurisé de l'ESATIC à Abidjan.
+                        </p>
+                        <p>
+                            Titulaire d'un <span class="redacted" title="Cliquer pour déclassifier">Baccalauréat Scientifique Série D (Promotion 2025)</span>, il conçoit des systèmes capables de <span class="redacted" title="Cliquer pour déclassifier">résoudre la préparation aux examens ivoiriens, chiffrer des données sensibles</span> et automatiser des concours d'excellence.
+                        </p>
+                        <p style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--neon-amber);">
+                            &gt; CONSEIL : Cliquez sur les barres noires <span class="redacted">[CENSURÉ]</span> ou utilisez la console ci-dessous.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="terminal-actions">
+                    <a href="#containment" class="btn-scp btn-scp-danger">
+                        <span>▶</span> Examiner les 4 Systèmes Déployés
+                    </a>
+                    <a href="#comms" class="btn-scp btn-scp-hollow">
+                        <span>✉</span> Liaison Directe
+                    </a>
+                </div>
+
+                <!-- Mini Console Interactive (CLI) -->
+                <div class="interactive-cli-box">
+                    <div class="cli-toolbar">
+                        <span>CONSOLE OPÉRATIONNELLE BASH-ESATIC v2.6</span>
+                        <span>[SESSION VERROUILLÉE]</span>
+                    </div>
+
+                    <div class="cli-chips-row">
+                        <button class="cli-chip" data-cmd="cat bio.txt">cat bio.txt</button>
+                        <button class="cli-chip" data-cmd="ls projects">ls projects</button>
+                        <button class="cli-chip" data-cmd="ls certs">ls certs</button>
+                        <button class="cli-chip" data-cmd="contact">contact</button>
+                        <button class="cli-chip" data-cmd="whoami">whoami</button>
+                        <button class="cli-chip" data-cmd="clear">clear</button>
+                    </div>
+
+                    <div id="cli-output" class="cli-output-log">Bienvenue dans le terminal d'accès sécurisé de Jules Euloge.
+Cliquez sur une commande ci-dessus ou tapez une instruction au clavier.</div>
+
+                    <div class="cli-input-line">
+                        <span>user@esatic:~$</span>
+                        <input type="text" id="cli-input" placeholder="Tapez 'help' ou cliquez sur un bouton..." autocomplete="off" spellcheck="false">
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Bande de Métriques Statistiques -->
+    <section class="stats-counter-strip">
+        <div class="stat-item">
+            <span class="stat-number" data-target="10">0</span>
+            <span class="stat-label">Certifications Internationales</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number" data-target="4">0</span>
+            <span class="stat-label">Systèmes Déployés</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number" data-target="2025">0</span>
+            <span class="stat-label">Baccalauréat Scientifique D</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number" data-target="100">0</span>
+            <span class="stat-label">% Passion & Rigueur TWIN</span>
+        </div>
+    </section>
+
+    <main>
+        <!-- Section 1 : Dossier d'Identification (À propos) -->
+        <section id="dossier-agent" class="scp-section">
+            <div class="section-scp-header">
+                <span class="section-scp-code">SECTION 01 // PARCOURS & IDENTIFICATION</span>
+                <h2 class="section-scp-title">Profil & Philosophie de Conception</h2>
+                <p class="section-scp-desc">Historique académique vérifié et compétences fondamentales répertoriées.</p>
+            </div>
+
+            <div class="researcher-dossier-grid">
+                <div class="scp-paper-record spotlight-card">
+                    <p>
+                        Après avoir décroché un <strong>Baccalauréat Scientifique Série D (2025)</strong> avec une solide formation en mathématiques et analyse, l'agent DJEAN-BI GOORE Jules Euloge a été affecté à l'<strong>École Supérieure Africaine des TIC (ESATIC)</strong>.
+                    </p>
+                    <p>
+                        Actuellement en <strong>deuxième année de Licence (L2)</strong> dans la filière spécialisée <strong>Technologie du Web et Image Numérique (TWIN)</strong>, il applique une rigueur algorithmique absolue à la création de produits numériques grand public.
+                    </p>
+                    <p>
+                        Ses recherches actuelles portent sur la <span class="redacted" title="Cliquer pour déclassifier">conception d'architectures résilientes</span>, la synchronisation de données hors-ligne et l'implémentation de modèles d'intelligence artificielle appliquée.
+                    </p>
+                </div>
+
+                <div class="protocol-cards-column">
+                    <div class="protocol-card spotlight-card">
+                        <div class="protocol-title">
+                            <span>🧪</span> PROTOCOLE SCIENTIFIQUE (BAC D)
+                        </div>
+                        <p>Capacité analytique éprouvée, modélisation logique et résolution formelle de problèmes complexes.</p>
+                    </div>
+
+                    <div class="protocol-card spotlight-card">
+                        <div class="protocol-title">
+                            <span>🎨</span> PROTOCOLE TWIN (ESATIC)
+                        </div>
+                        <p>Harmonisation entre design d'interfaces haut de gamme, interaction dynamique et ergonomie logicielle.</p>
+                    </div>
+
+                    <div class="protocol-card spotlight-card">
+                        <div class="protocol-title">
+                            <span>🛡️</span> PROTOCOLE DE CONFINEMENT SEC-DEV
+                        </div>
+                        <p>Développement full-stack sécurisé (Python/Django, Dart, bases SQL et protocoles 2FA).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2 : Les Systèmes Déployés (Projets avec Châssis Tech) -->
+        <section id="containment" class="scp-section">
+            <div class="section-scp-header">
+                <span class="section-scp-code">SECTION 02 // SYSTÈMES & APPLICATIONS</span>
+                <h2 class="section-scp-title">Systèmes Logiciels Déployés</h2>
+                <p class="section-scp-desc">Applications conçues, testées et maintenues avec un niveau d'exigence maximal.</p>
+            </div>
+
+            <div class="containment-grid">
+                
+                <!-- SCP-042 : Xamly -->
+                <article class="scp-item-card spotlight-card">
+                    <div class="project-window-bar">
+                        <div class="window-dots">
+                            <span class="w-dot" style="background:#ff4757;"></span>
+                            <span class="w-dot" style="background:#ffa502;"></span>
+                            <span class="w-dot" style="background:#2ed573;"></span>
+                        </div>
+                        <span class="project-code-tag">SCP-042 // APP MOBILE</span>
+                        <span class="status-pill-live">● EN SERVICE</span>
+                    </div>
+
+                    <h3>Xamly</h3>
+                    <span class="scp-item-alias">"La Banque Mémorielle des Examens Nationaux"</span>
+
+                    <p class="scp-item-procedures">
+                        Application mobile permettant aux élèves ivoiriens de consulter l'ensemble des sujets d'examens nationaux (BEPC, BAC, BTS). Confinement hors-ligne complet avec sous-programme cognitif "IA Xamly" intégré pour l'assistance aux devoirs.
+                    </p>
+
+                    <div class="scp-stack-tags">
+                        <span class="stack-tag">Supabase</span>
+                        <span class="stack-tag">Mobile Engine</span>
+                        <span class="stack-tag">IA Xamly</span>
+                        <span class="stack-tag">Offline Sync</span>
+                    </div>
+
+                    <div class="project-footer-row">
+                        <span class="project-metric-pill">✓ 100% Hors-Ligne & IA</span>
+                        <a href="#dossier-agent" class="scp-view-link">
+                            <span>Détails</span> ↗
+                        </a>
+                    </div>
+                </article>
+
+                <!-- SCP-108 : Calculateur de Moyenne -->
+                <article class="scp-item-card spotlight-card">
+                    <div class="project-window-bar">
+                        <div class="window-dots">
+                            <span class="w-dot" style="background:#ff4757;"></span>
+                            <span class="w-dot" style="background:#ffa502;"></span>
+                            <span class="w-dot" style="background:#2ed573;"></span>
+                        </div>
+                        <span class="project-code-tag">SCP-108 // WEB SERVICE</span>
+                        <span class="status-pill-live">● EN SERVICE</span>
+                    </div>
+
+                    <h3>Calculateur de Moyenne</h3>
+                    <span class="scp-item-alias">"L'Algorithme des Concours ESATIC / INP-HB"</span>
+
+                    <p class="scp-item-procedures">
+                        Plateforme web automatisant le calcul des moyennes pondérées selon les formules strictes des concours d'entrée aux grandes écoles ESATIC et INP-HB. Zéro anomalie de calcul constatée sur les échantillons testés.
+                    </p>
+
+                    <div class="scp-stack-tags">
+                        <span class="stack-tag">Python</span>
+                        <span class="stack-tag">Django</span>
+                        <span class="stack-tag">Firebase</span>
+                        <span class="stack-tag">Firestore</span>
+                    </div>
+
+                    <div class="project-footer-row">
+                        <span class="project-metric-pill">✓ Pondérations Officielles</span>
+                        <a href="#dossier-agent" class="scp-view-link">
+                            <span>Détails</span> ↗
+                        </a>
+                    </div>
+                </article>
+
+                <!-- SCP-256 : Coffre-fort Numérique -->
+                <article class="scp-item-card spotlight-card">
+                    <div class="project-window-bar">
+                        <div class="window-dots">
+                            <span class="w-dot" style="background:#ff4757;"></span>
+                            <span class="w-dot" style="background:#ffa502;"></span>
+                            <span class="w-dot" style="background:#2ed573;"></span>
+                        </div>
+                        <span class="project-code-tag">SCP-256 // SÉCURITÉ</span>
+                        <span class="status-pill-live">● EN SERVICE</span>
+                    </div>
+
+                    <h3>Coffre-fort Numérique</h3>
+                    <span class="scp-item-alias">"Le Coffre de Haute Sécurité Civile"</span>
+
+                    <p class="scp-item-procedures">
+                        Système de stockage et de partage sécurisé de documents administratifs civils personnels (contexte ivoirien). Verrouillage cryptographique, authentification à deux facteurs (2FA) et partage éphémère par QR code dynamique.
+                    </p>
+
+                    <div class="scp-stack-tags">
+                        <span class="stack-tag">Web Sécurité</span>
+                        <span class="stack-tag">2FA Protection</span>
+                        <span class="stack-tag">QR Code Dynamique</span>
+                        <span class="stack-tag">Cloud Storage</span>
+                    </div>
+
+                    <div class="project-footer-row">
+                        <span class="project-metric-pill">✓ Chiffrement & 2FA</span>
+                        <a href="#dossier-agent" class="scp-view-link">
+                            <span>Détails</span> ↗
+                        </a>
+                    </div>
+                </article>
+
+                <!-- SCP-512 : Dart CLI Task Manager -->
+                <article class="scp-item-card spotlight-card">
+                    <div class="project-window-bar">
+                        <div class="window-dots">
+                            <span class="w-dot" style="background:#ff4757;"></span>
+                            <span class="w-dot" style="background:#ffa502;"></span>
+                            <span class="w-dot" style="background:#2ed573;"></span>
+                        </div>
+                        <span class="project-code-tag">SCP-512 // CLI SYSTEM</span>
+                        <span class="status-pill-live">● EN SERVICE</span>
+                    </div>
+
+                    <h3>Gestionnaire CLI Dart</h3>
+                    <span class="scp-item-alias">"Le Terminal d'Ordonnancement FlutterFire"</span>
+
+                    <p class="scp-item-procedures">
+                        Développé au camp d'élite FlutterFire 2026 : moteur en ligne de commande appliquant la programmation orientée objet stricte en Pure Dart (classes abstraites, héritage, interfaces, persistance JSON et tests unitaires certifiés).
+                    </p>
+
+                    <div class="scp-stack-tags">
+                        <span class="stack-tag">Pure Dart</span>
+                        <span class="stack-tag">CLI Terminal</span>
+                        <span class="stack-tag">Persistance JSON</span>
+                        <span class="stack-tag">Tests Unitaires</span>
+                    </div>
+
+                    <div class="project-footer-row">
+                        <span class="project-metric-pill">✓ POO Pure & Tests Unitaires</span>
+                        <a href="#dossier-agent" class="scp-view-link">
+                            <span>Détails</span> ↗
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Section 3 : Habilitations de Sécurité Officielles (Certificats) -->
+        <section id="clearances" class="scp-section">
+            <div class="section-scp-header">
+                <span class="section-scp-code">SECTION 03 // ACCRÉDITATIONS OFFICIELLES</span>
+                <h2 class="section-scp-title">Certifications & Habilitations</h2>
+                <p class="section-scp-desc">Diplômes et habilitations vérifiables délivrés par des sanctuaires mondiaux de la technologie.</p>
+            </div>
+
+            <div class="clearance-grid">
+                
+                <a href="https://openclassrooms.com/en/course-certificates/7386825826" target="_blank" rel="noopener noreferrer" class="clearance-card spotlight-card">
+                    <div class="clearance-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+                    </div>
+                    <div class="clearance-info">
+                        <h4>Learn Python Basics</h4>
+                        <span class="clearance-issuer">OpenClassrooms</span>
+                        <span class="clearance-status">HABILITÉ // VÉRIFIER ↗</span>
+                    </div>
+                </a>
+
+                <a href="https://openclassrooms.com/en/course-certificates/6885753771" target="_blank" rel="noopener noreferrer" class="clearance-card spotlight-card">
+                    <div class="clearance-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+                    </div>
+                    <div class="clearance-info">
+                        <h4>Manage Project With Git</h4>
+                        <span class="clearance-issuer">OpenClassrooms</span>
+                        <span class="clearance-status">HABILITÉ // VÉRIFIER ↗</span>
+                    </div>
+                </a>
+
+                <a href="https://openclassrooms.com/en/course-certificates/4563716014" target="_blank" rel="noopener noreferrer" class="clearance-card spotlight-card">
+                    <div class="clearance-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+                    </div>
+                    <div class="clearance-info">
+                        <h4>Build Pages (HTML & CSS)</h4>
+                        <span class="clearance-issuer">OpenClassrooms</span>
+                        <span class="clearance-status">HABILITÉ // VÉRIFIER ↗</span>
+                    </div>
+                </a>
+
+                <a href="https://www.credly.com/badges/c8574f5d-b4e4-47da-8d8c-1b4a59d85aa0/linked_in_profile" target="_blank" rel="noopener noreferrer" class="clearance-card spotlight-card">
+                    <div class="clearance-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+                    </div>
+                    <div class="clearance-info">
+                        <h4>Apply AI: Update Resume</h4>
+                        <span class="clearance-issuer">Cisco / Credly</span>
+                        <span class="clearance-status">HABILITÉ // VÉRIFIER ↗</span>
+                    </div>
+                </a>
+
+                <a href="https://www.credly.com/badges/0b3449e0-a057-48e2-a6ef-e917a7e15974/linked_in_profile" target="_blank" rel="noopener noreferrer" class="clearance-card spotlight-card">
+                    <div class="clearance-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+                    </div>
+                    <div class="clearance-info">
+                        <h4>Apply AI: Customer Reviews</h4>
+                        <span class="clearance-issuer">Cisco / Credly</span>
+                        <span class="clearance-status">HABILITÉ // VÉRIFIER ↗</span>
+                    </div>
+                </a>
+
+                <a href="https://nextflutter.com/certifications/verify/NF-2026-2B061464" target="_blank" rel="noopener noreferrer" class="clearance-card spotlight-card">
+                    <div class="clearance-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+                    </div>
+                    <div class="clearance-info">
+                        <h4>Dart CLI Task Manager</h4>
+                        <span class="clearance-issuer">NextFlutter Camp 2026</span>
+                        <span class="clearance-status">HABILITÉ // VÉRIFIER ↗</span>
+                    </div>
+                </a>
+
+                <a href="https://freecodecamp.org/certification/fcc-15b19149-d5f3-4a2d-8bec-a33621cf145b/responsive-web-design" target="_blank" rel="noopener noreferrer" class="clearance-card spotlight-card">
+                    <div class="clearance-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+                    </div>
+                    <div class="clearance-info">
+                        <h4>Responsive Web Design V8</h4>
+                        <span class="clearance-issuer">freeCodeCamp</span>
+                        <span class="clearance-status">HABILITÉ // VÉRIFIER ↗</span>
+                    </div>
+                </a>
+
+                <a href="icdl-certificate.png" target="_blank" rel="noopener noreferrer" class="clearance-card spotlight-card">
+                    <div class="clearance-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+                    </div>
+                    <div class="clearance-info">
+                        <h4>ICDL Profile Certificate</h4>
+                        <span class="clearance-issuer">ICDL Africa</span>
+                        <span class="clearance-status">HABILITÉ // VOIR PIÈCE ↗</span>
+                    </div>
+                </a>
+
+                <a href="mtn-ia-pour-tous-certificate.png" target="_blank" rel="noopener noreferrer" class="clearance-card spotlight-card">
+                    <div class="clearance-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+                    </div>
+                    <div class="clearance-info">
+                        <h4>L'IA pour tous</h4>
+                        <span class="clearance-issuer">MTN & Microsoft</span>
+                        <span class="clearance-status">HABILITÉ // VOIR PIÈCE ↗</span>
+                    </div>
+                </a>
+
+                <a href="https://coursera.org/verify/UPSL5MBINUBF" target="_blank" rel="noopener noreferrer" class="clearance-card spotlight-card">
+                    <div class="clearance-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+                    </div>
+                    <div class="clearance-info">
+                        <h4>Excel for Data Analysis</h4>
+                        <span class="clearance-issuer">Coursera (Macquarie)</span>
+                        <span class="clearance-status">HABILITÉ // VÉRIFIER ↗</span>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+
+        <!-- Section 4 : Protocoles Techniques (Compétences) -->
+        <section id="protocols" class="scp-section">
+            <div class="section-scp-header">
+                <span class="section-scp-code">SECTION 04 // PROTOCOLES OPÉRATIONNELS</span>
+                <h2 class="section-scp-title">Matrice des Protocoles & Stacks</h2>
+                <p class="section-scp-desc">Langages de programmation et environnements techniques certifiés.</p>
+            </div>
+
+            <div class="protocols-grid">
+                
+                <!-- Front-End -->
+                <div class="protocol-box spotlight-card">
+                    <div class="protocol-box-header">
+                        <span>⚡</span> PROTOCOLE FRONT-END & TWIN
+                    </div>
+                    <div class="skill-row">
+                        <div class="skill-info">
+                            <span>HTML5 / CSS3 Sémantique</span>
+                            <span>95% Efficience</span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-progress" style="width: 95%;"></div></div>
+                    </div>
+                    <div class="skill-row">
+                        <div class="skill-info">
+                            <span>Responsive & CSS Architecture</span>
+                            <span>90% Efficience</span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-progress" style="width: 90%;"></div></div>
+                    </div>
+                    <div class="skill-row">
+                        <div class="skill-info">
+                            <span>JavaScript (DOM / Canvas / Audio)</span>
+                            <span>82% Efficience</span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-progress" style="width: 82%;"></div></div>
+                    </div>
+                </div>
+
+                <!-- Back-End -->
+                <div class="protocol-box spotlight-card">
+                    <div class="protocol-box-header">
+                        <span>📡</span> PROTOCOLE BACK-END & DONNÉES
+                    </div>
+                    <div class="skill-row">
+                        <div class="skill-info">
+                            <span>Python</span>
+                            <span>86% Efficience</span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-progress" style="width: 86%;"></div></div>
+                    </div>
+                    <div class="skill-row">
+                        <div class="skill-info">
+                            <span>Django Framework</span>
+                            <span>80% Efficience</span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-progress" style="width: 80%;"></div></div>
+                    </div>
+                    <div class="skill-row">
+                        <div class="skill-info">
+                            <span>SQL & Bases Relationnelles</span>
+                            <span>83% Efficience</span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-progress" style="width: 83%;"></div></div>
+                    </div>
+                    <div class="skill-row">
+                        <div class="skill-info">
+                            <span>PHP & Fondations Web</span>
+                            <span>75% Efficience</span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-progress" style="width: 75%;"></div></div>
+                    </div>
+                </div>
+
+                <!-- Mobile & Dev -->
+                <div class="protocol-box spotlight-card">
+                    <div class="protocol-box-header">
+                        <span>⚙️</span> PROTOCOLE MOBILE & OUTILS
+                    </div>
+                    <div class="skill-row">
+                        <div class="skill-info">
+                            <span>Dart & POO Avancée</span>
+                            <span>86% Efficience</span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-progress" style="width: 86%;"></div></div>
+                    </div>
+                    <div class="skill-row">
+                        <div class="skill-info">
+                            <span>Supabase & Firebase Cloud</span>
+                            <span>78% Efficience</span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-progress" style="width: 78%;"></div></div>
+                    </div>
+                    <div class="skill-row">
+                        <div class="skill-info">
+                            <span>Git & Versioning GitHub</span>
+                            <span>88% Efficience</span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-progress" style="width: 88%;"></div></div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Section 5 : Canal de Liaison Sécurisé (Contact) -->
+        <section id="comms" class="scp-section">
+            <div class="secure-comms-vault spotlight-card">
+                <h3>Établir une Liaison Directe</h3>
+                <p>
+                    Pour toute opportunité professionnelle, recrutement en alternance/stage, mission d'ingénierie logicielle ou projet numérique, utilisez les canaux ci-dessous :
+                </p>
+
+                <div class="comms-channels-row">
+                    <a href="tel:+2250500300596" class="comm-link-btn">
+                        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        <span>Ligne Directe : 05 00 30 05 96</span>
+                    </a>
+
+                    <a href="https://github.com/goorebidjeaneloge-ship-it" target="_blank" rel="noopener noreferrer" class="comm-link-btn">
+                        <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                        <span>Dépôt GitHub</span>
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/eloge-goore-bi-djean-b4699039a" target="_blank" rel="noopener noreferrer" class="comm-link-btn">
+                        <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                        <span>Fiche LinkedIn</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="scp-footer">
+        <p>&copy; 2026 DJEAN-BI GOORE Jules Euloge &bull; Étudiant TWIN (ESATIC) &bull; Abidjan, Côte d'Ivoire.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
