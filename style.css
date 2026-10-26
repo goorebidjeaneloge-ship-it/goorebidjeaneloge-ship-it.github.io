@@ -46,6 +46,57 @@ body.mode-paper {
     background-image: none !important;
 }
 
+body.mode-paper .scp-nav {
+    background: rgba(255, 255, 255, 0.94);
+    border-bottom-color: rgba(0, 0, 0, 0.1);
+}
+
+body.mode-paper .mobile-drawer {
+    background: #ffffff;
+    border-left-color: rgba(0, 0, 0, 0.12);
+    box-shadow: -15px 0 45px rgba(0, 0, 0, 0.15);
+}
+
+body.mode-paper .mobile-drawer-header,
+body.mode-paper .mobile-drawer-actions {
+    border-color: rgba(0, 0, 0, 0.08);
+}
+
+body.mode-paper .mobile-close-btn {
+    background: rgba(0, 0, 0, 0.04);
+    border-color: rgba(0, 0, 0, 0.12);
+    color: #1e293b;
+}
+
+body.mode-paper .mobile-nav-link {
+    background: rgba(0, 0, 0, 0.03);
+    color: #1e293b;
+}
+
+body.mode-paper .mobile-nav-link:hover,
+body.mode-paper .mobile-nav-link:active {
+    background: rgba(2, 132, 199, 0.1);
+    border-color: #0284c7;
+    color: #0284c7;
+}
+
+body.mode-paper .avatar-mugshot {
+    background: #e2e8f0;
+    border-color: #0284c7;
+}
+
+body.mode-paper .status-pill-live {
+    background: rgba(16, 185, 129, 0.12);
+    border-color: rgba(16, 185, 129, 0.35);
+    color: #059669;
+}
+
+body.mode-paper .scp-footer {
+    background: #f1f5f9;
+    border-top-color: rgba(0, 0, 0, 0.1);
+    color: #64748b;
+}
+
 /* Base */
 *, *::before, *::after {
     margin: 0;
@@ -57,6 +108,8 @@ html {
     scroll-behavior: smooth;
     background-color: var(--bg-main);
     color: var(--text-main);
+    overflow-x: hidden;
+    width: 100%;
 }
 
 body {
@@ -64,12 +117,18 @@ body {
     background-color: var(--bg-main);
     min-height: 100vh;
     overflow-x: hidden;
+    width: 100%;
     line-height: 1.7;
+    -webkit-tap-highlight-color: transparent;
     background-image: 
         radial-gradient(circle at 50% 0%, rgba(0, 240, 255, 0.04) 0%, transparent 60%),
         radial-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 0);
     background-size: 100% 800px, 28px 28px;
     background-repeat: no-repeat, repeat;
+}
+
+button, a, .cli-chip, .redacted {
+    touch-action: manipulation;
 }
 
 /* --- 1. LIGNE DE PROGRESSION DE SCROLL NÉON --- */
@@ -89,13 +148,19 @@ body {
 .crt-overlay {
     position: fixed;
     inset: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%);
     background-size: 100% 4px;
     pointer-events: none;
     z-index: 999;
     opacity: 0.25;
+}
+
+img, svg, video {
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
 /* --- 2. BARRE DE NAVIGATION MODERNE --- */
@@ -193,16 +258,223 @@ body {
     transform: translateY(-1px);
 }
 
+/* --- CONTRÔLES MOBILE & TIROIR DE NAVIGATION (DRAWER) --- */
+.scp-mobile-bar-actions {
+    display: none;
+    align-items: center;
+    gap: 8px;
+}
+
+.scp-btn-compact {
+    padding: 0.45rem 0.65rem;
+    font-size: 0.95rem;
+    min-width: 38px;
+    min-height: 38px;
+    justify-content: center;
+}
+
+.scp-nav-toggle {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 0;
+    transition: var(--transition);
+}
+
+.scp-nav-toggle:hover {
+    border-color: var(--neon-cyan);
+    background: rgba(0, 240, 255, 0.1);
+}
+
+.scp-nav-toggle .toggle-bar {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background-color: var(--neon-cyan);
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease, width 0.3s ease;
+}
+
+.scp-nav-toggle.is-active .toggle-bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.scp-nav-toggle.is-active .toggle-bar:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.scp-nav-toggle.is-active .toggle-bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Tiroir de navigation Mobile */
+.mobile-drawer {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: min(340px, 86vw);
+    height: 100vh;
+    height: 100dvh;
+    background: #080c13;
+    border-left: 1px solid var(--border-active);
+    box-shadow: -15px 0 50px rgba(0, 0, 0, 0.85);
+    z-index: 1200;
+    transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 1.4rem;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.mobile-drawer.open {
+    right: 0;
+}
+
+.mobile-drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.mobile-drawer-tag {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--neon-cyan);
+    letter-spacing: 0.5px;
+}
+
+.mobile-close-btn {
+    width: 36px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-pure);
+    font-size: 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    transition: var(--transition);
+}
+
+.mobile-close-btn:hover {
+    color: var(--neon-red);
+    border-color: var(--neon-red);
+    background: rgba(255, 51, 68, 0.1);
+}
+
+.mobile-nav-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    margin-bottom: 2rem;
+}
+
+.mobile-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    color: var(--text-main);
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    border: 1px solid transparent;
+    background: rgba(255, 255, 255, 0.02);
+    transition: var(--transition);
+}
+
+.mobile-nav-link .m-num {
+    color: var(--neon-cyan);
+    font-weight: 700;
+}
+
+.mobile-nav-link:hover, .mobile-nav-link:active {
+    background: rgba(0, 240, 255, 0.08);
+    border-color: var(--border-active);
+    color: var(--neon-cyan);
+    transform: translateX(4px);
+}
+
+.mobile-drawer-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: auto;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-subtle);
+}
+
+.mobile-action-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 0.75rem 1rem;
+    font-size: 0.88rem;
+}
+
+.mobile-drawer-footer {
+    margin-top: 1.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    text-align: center;
+    line-height: 1.5;
+}
+
+.mobile-version-tag {
+    color: var(--neon-amber);
+    margin-top: 4px;
+    letter-spacing: 0.5px;
+}
+
+.mobile-drawer-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(5px);
+    z-index: 1150;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.mobile-drawer-backdrop.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
 /* --- 3. TEXTE CENSURÉ [REDACTED] INTERACTIF --- */
 .redacted {
     background: #000000;
     color: transparent !important;
-    padding: 0 6px;
+    padding: 1px 5px;
     border-radius: 3px;
     cursor: pointer;
     user-select: none;
     transition: all 0.25s ease;
-    display: inline-block;
+    display: inline;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
     position: relative;
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -244,14 +516,23 @@ body.all-declassified .redacted {
     z-index: 1;
 }
 
-.spotlight-card:hover {
-    border-color: var(--border-active);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 240, 255, 0.1);
-    transform: translateY(-4px);
+@media (hover: hover) {
+    .spotlight-card:hover {
+        border-color: var(--border-active);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 240, 255, 0.1);
+        transform: translateY(-4px);
+    }
+
+    .spotlight-card:hover::before {
+        opacity: 1;
+    }
 }
 
-.spotlight-card:hover::before {
-    opacity: 1;
+@media (hover: none) {
+    .spotlight-card:active {
+        border-color: var(--border-active);
+        transform: scale(0.99);
+    }
 }
 
 /* --- 5. HERO SECTION AVEC CHÂSSIS TERMINAL & MUGSHOT --- */
@@ -286,6 +567,19 @@ body.all-declassified .redacted {
     font-family: var(--font-mono);
     font-size: 0.82rem;
     color: var(--text-dim);
+    gap: 12px;
+}
+
+.terminal-header-title {
+    display: inline-flex;
+    align-items: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.title-short {
+    display: none;
 }
 
 .terminal-header-dots {
@@ -639,7 +933,7 @@ body.all-declassified .redacted {
 /* --- SECTION 2 : CARTES DE PROJETS HAUTE TECHNOLOGIE --- */
 .containment-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
     gap: 2.2rem;
 }
 
@@ -752,7 +1046,7 @@ body.all-declassified .redacted {
 /* --- SECTION 3 : HABILITATIONS & CERTIFICATIONS --- */
 .clearance-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
     gap: 1.6rem;
 }
 
@@ -813,7 +1107,7 @@ body.all-declassified .redacted {
 /* --- SECTION 4 : PROTOCOLES TECHNIQUES --- */
 .protocols-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
     gap: 2rem;
 }
 
@@ -956,33 +1250,501 @@ body.all-declassified .redacted {
     }
 }
 
-/* Responsive */
-@media (max-width: 900px) {
+/* =====================================================================
+   RESPONSIVE DESIGN & ADAPTATION MOBILE / TABLETTE
+   ===================================================================== */
+
+/* 1. TABLETTES & ÉCRANS COMPACTS (max-width: 992px) */
+@media (max-width: 992px) {
+    .scp-nav {
+        padding: 0.75rem 1.5rem;
+    }
+
+    .scp-nav-links,
+    .scp-nav-actions {
+        display: none !important;
+    }
+
+    .scp-mobile-bar-actions {
+        display: flex;
+    }
+
+    .hero-dossier {
+        min-height: auto;
+        padding: 3.5rem 1.5rem 2.5rem;
+    }
+
+    .terminal-body {
+        padding: 2.2rem 1.8rem;
+    }
+
+    .terminal-body h1 {
+        font-size: 2.4rem;
+    }
+
     .researcher-dossier-grid {
         grid-template-columns: 1fr;
-    }
-    .stats-counter-strip {
-        grid-template-columns: repeat(2, 1fr);
         gap: 2rem;
     }
-    .terminal-body h1 {
-        font-size: 2.3rem;
+
+    .stats-counter-strip {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.6rem;
+        margin: 2.5rem 1.5rem 0;
+        padding: 1.8rem 1.5rem;
     }
-    .researcher-id-block {
-        flex-direction: column;
-        text-align: center;
+
+    .scp-section {
+        padding: 5rem 1.5rem;
     }
 }
 
+/* 2. SMARTPHONES STANDARD & ORIENTATION PAYSAGE (max-width: 768px) */
 @media (max-width: 768px) {
-    .scp-nav-links {
-        display: none;
+    .scp-nav {
+        padding: 0.75rem 1rem;
     }
+
+    .hero-dossier {
+        padding: 2rem 1rem 1.5rem;
+    }
+
+    .terminal-case-frame {
+        border-radius: 12px;
+    }
+
+    .terminal-header {
+        padding: 0.75rem 1rem;
+        font-size: 0.76rem;
+    }
+
     .terminal-body {
-        padding: 2rem 1.4rem;
+        padding: 1.8rem 1.15rem;
     }
+
+    .researcher-badge {
+        font-size: 0.75rem;
+        letter-spacing: 1px;
+    }
+
+    .terminal-body h1 {
+        font-size: clamp(1.75rem, 6.5vw, 2.2rem);
+        line-height: 1.2;
+    }
+
+    .terminal-body h2 {
+        font-size: 1rem;
+        line-height: 1.45;
+    }
+
+    .researcher-id-block {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.25rem;
+        margin: 1.5rem 0;
+    }
+
+    .avatar-mugshot {
+        width: 120px;
+        height: 120px;
+        margin: 0 auto;
+    }
+
+    .terminal-brief {
+        font-size: 0.96rem;
+        line-height: 1.7;
+        text-align: left;
+    }
+
+    .terminal-actions {
+        flex-direction: column;
+        width: 100%;
+        gap: 0.75rem;
+        margin-top: 1.25rem;
+    }
+
+    .btn-scp {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+        padding: 0.8rem 1.2rem;
+        font-size: 0.88rem;
+    }
+
+    /* Mini Console CLI Interactive sur Mobile */
+    .interactive-cli-box {
+        margin-top: 2rem;
+        padding: 1.1rem 0.9rem;
+    }
+
+    .cli-toolbar {
+        font-size: 0.72rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+        margin-bottom: 0.8rem;
+    }
+
+    .cli-chips-row {
+        gap: 0.4rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .cli-chip {
+        font-size: 0.74rem;
+        padding: 0.35rem 0.6rem;
+        min-height: 32px;
+    }
+
+    .cli-output-log {
+        font-size: 0.8rem;
+        max-height: 140px;
+        line-height: 1.5;
+    }
+
+    .cli-input-line {
+        font-size: 0.84rem;
+    }
+
+    .cli-input-line input {
+        font-size: 16px; /* Empêche le zoom forcé indésirable sur iOS Safari */
+    }
+
+    /* Compteurs statistiques */
+    .stats-counter-strip {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.2rem;
+        margin: 2rem 0.75rem 0;
+        padding: 1.4rem 1rem;
+        border-radius: 12px;
+    }
+
+    .stat-number {
+        font-size: 2.1rem;
+    }
+
+    .stat-label {
+        font-size: 0.72rem;
+        letter-spacing: 0.5px;
+    }
+
+    /* Sections */
+    .scp-section {
+        padding: 3.5rem 1rem;
+    }
+
+    .section-scp-header {
+        margin-bottom: 2.2rem;
+        padding-left: 1rem;
+    }
+
+    .section-scp-code {
+        font-size: 0.75rem;
+        letter-spacing: 2px;
+    }
+
+    .section-scp-title {
+        font-size: clamp(1.55rem, 5.5vw, 2rem);
+        line-height: 1.2;
+    }
+
+    .section-scp-desc {
+        font-size: 0.92rem;
+    }
+
+    /* Section 1 */
+    .scp-paper-record {
+        padding: 1.6rem 1.15rem;
+    }
+
+    .scp-paper-record p {
+        font-size: 0.98rem;
+        line-height: 1.7;
+    }
+
+    .protocol-card {
+        padding: 1.3rem 1rem;
+    }
+
+    .protocol-title {
+        font-size: 0.95rem;
+    }
+
+    /* Section 2 : Systèmes / Projets */
+    .containment-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .scp-item-card {
+        padding: 1.6rem 1.15rem;
+    }
+
+    .scp-item-card h3 {
+        font-size: 1.38rem;
+    }
+
+    .scp-item-procedures {
+        font-size: 0.92rem;
+    }
+
+    .project-footer-row {
+        flex-wrap: wrap;
+        gap: 0.6rem;
+    }
+
+    /* Section 3 : Certifications */
+    .clearance-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .clearance-card {
+        padding: 1.15rem 1rem;
+        gap: 0.9rem;
+    }
+
+    /* Section 4 : Protocoles / Stacks */
+    .protocols-grid {
+        grid-template-columns: 1fr;
+        gap: 1.4rem;
+    }
+
+    .protocol-box {
+        padding: 1.5rem 1.15rem;
+    }
+
+    .protocol-box-header {
+        font-size: 1.05rem;
+        margin-bottom: 1.3rem;
+    }
+
+    /* Section 5 : Contact */
+    .secure-comms-vault {
+        padding: 2.5rem 1.2rem;
+        border-radius: 12px;
+    }
+
+    .secure-comms-vault h3 {
+        font-size: 1.75rem;
+    }
+
+    .secure-comms-vault p {
+        font-size: 0.98rem;
+        margin-bottom: 2rem;
+    }
+
+    .comms-channels-row {
+        flex-direction: column;
+        gap: 0.85rem;
+        width: 100%;
+    }
+
+    .comm-link-btn {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+        padding: 0.85rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    /* Footer */
+    .scp-footer {
+        padding: 2.2rem 1rem;
+        font-size: 0.8rem;
+    }
+}
+
+/* 3. MOBILES COMPACTS (max-width: 600px) */
+@media (max-width: 600px) {
+    .title-full {
+        display: none !important;
+    }
+
+    .title-short {
+        display: inline !important;
+    }
+}
+
+/* 4. PETITS SMARTPHONES (max-width: 480px) */
+@media (max-width: 480px) {
+    .scp-nav {
+        padding: 0.65rem 0.85rem;
+    }
+
+    .scp-brand {
+        font-size: 1.05rem;
+        gap: 7px;
+    }
+
+    .scp-btn-compact {
+        min-width: 36px;
+        min-height: 36px;
+        padding: 0.4rem;
+        font-size: 0.85rem;
+    }
+
+    .scp-nav-toggle {
+        width: 38px;
+        height: 38px;
+    }
+
+    .hero-dossier {
+        padding: 1.5rem 0.75rem 1.25rem;
+    }
+
+    .terminal-header {
+        padding: 0.65rem 0.85rem;
+        gap: 8px;
+    }
+
+    .terminal-header-dots {
+        gap: 5px;
+    }
+
+    .dot-indicator {
+        width: 9px;
+        height: 9px;
+    }
+
+    .status-pill-live {
+        font-size: 0.65rem;
+        padding: 2px 7px;
+    }
+
+    .terminal-body {
+        padding: 1.4rem 0.85rem;
+    }
+
+    .terminal-body h1 {
+        font-size: 1.65rem;
+    }
+
+    .terminal-body h2 {
+        font-size: 0.92rem;
+    }
+
+    .avatar-mugshot {
+        width: 105px;
+        height: 105px;
+    }
+
+    .terminal-brief {
+        font-size: 0.9rem;
+    }
+
+    .stats-counter-strip {
+        padding: 1.2rem 0.75rem;
+        gap: 0.9rem;
+        margin: 1.6rem 0.5rem 0;
+    }
+
+    .stat-number {
+        font-size: 1.8rem;
+    }
+
+    .stat-label {
+        font-size: 0.68rem;
+    }
+
+    .scp-section {
+        padding: 2.8rem 0.75rem;
+    }
+
+    .section-scp-header {
+        padding-left: 0.75rem;
+        margin-bottom: 1.8rem;
+    }
+
+    .section-scp-title {
+        font-size: 1.5rem;
+    }
+
+    .scp-paper-record {
+        padding: 1.3rem 0.85rem;
+    }
+
+    .protocol-card {
+        padding: 1.1rem 0.85rem;
+    }
+
+    .scp-item-card {
+        padding: 1.3rem 0.85rem;
+    }
+
+    .scp-item-card h3 {
+        font-size: 1.25rem;
+    }
+
+    .clearance-card {
+        padding: 1rem 0.85rem;
+        gap: 0.75rem;
+    }
+
+    .clearance-icon {
+        width: 42px;
+        height: 42px;
+    }
+
+    .clearance-info h4 {
+        font-size: 0.88rem;
+    }
+
+    .protocol-box {
+        padding: 1.3rem 0.85rem;
+    }
+
+    .secure-comms-vault {
+        padding: 2rem 0.85rem;
+    }
+
+    .secure-comms-vault h3 {
+        font-size: 1.45rem;
+    }
+
+    .mobile-drawer {
+        width: min(310px, 92vw);
+        padding: 1.25rem 1rem;
+    }
+}
+
+/* 5. TRÈS PETITS ÉCRANS (max-width: 360px) */
+@media (max-width: 360px) {
+    .scp-brand span:last-child {
+        font-size: 0.95rem;
+    }
+
+    .scp-mobile-bar-actions {
+        gap: 5px;
+    }
+
+    .scp-btn-compact {
+        min-width: 32px;
+        min-height: 32px;
+        padding: 0.35rem;
+    }
+
+    .scp-nav-toggle {
+        width: 34px;
+        height: 34px;
+    }
+
     .stats-counter-strip {
         grid-template-columns: 1fr;
-        padding: 1.5rem;
+        gap: 0.8rem;
+    }
+
+    .terminal-body h1 {
+        font-size: 1.45rem;
+    }
+
+    .project-window-bar {
+        flex-wrap: wrap;
+        gap: 4px;
+    }
+
+    .comm-link-btn {
+        font-size: 0.82rem;
+        padding: 0.75rem 0.6rem;
     }
 }

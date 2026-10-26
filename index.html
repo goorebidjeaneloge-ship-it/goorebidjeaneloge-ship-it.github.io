@@ -21,7 +21,7 @@
     <!-- Effet de balayage CRT subtil -->
     <div class="crt-overlay"></div>
 
-    <!-- Navigation Moderne -->
+    <!-- Navigation Moderne & Responsive -->
     <nav class="scp-nav">
         <div class="scp-nav-inner">
             <a href="#" class="scp-brand">
@@ -29,6 +29,7 @@
                 <span>JULES.D // TWIN</span>
             </a>
 
+            <!-- Liens de navigation Desktop -->
             <ul class="scp-nav-links">
                 <li><a href="#dossier-agent" class="scp-nav-link">01. Profil</a></li>
                 <li><a href="#containment" class="scp-nav-link">02. Systèmes</a></li>
@@ -37,21 +38,71 @@
                 <li><a href="#comms" class="scp-nav-link">05. Contact</a></li>
             </ul>
 
+            <!-- Actions Desktop -->
             <div class="scp-nav-actions">
                 <button id="btn-declassify-all" class="scp-ctrl-btn" title="Révéler toutes les données censurées">
-                    <span>🔓</span> Déclassifier
+                    <span>🔓</span> <span class="btn-text">Déclassifier</span>
                 </button>
                 <button id="btn-paper-mode" class="scp-ctrl-btn" title="Basculer vers le mode clair de bureau">
-                    <span>📄</span> Mode Papier
+                    <span>📄</span> <span class="btn-text">Mode Papier</span>
                 </button>
                 <button id="btn-print-cv" class="scp-ctrl-btn" title="Imprimer ou enregistrer le profil en PDF">
-                    <span>🖨️</span> Exporter CV
+                    <span>🖨️</span> <span class="btn-text">Exporter CV</span>
                 </button>
                 <button id="btn-scp-sound" class="scp-ctrl-btn" title="Activer / Couper l'audio mécanique">
-                    <span>🔊</span> Audio
+                    <span>🔊</span> <span class="btn-text">Audio</span>
+                </button>
+            </div>
+
+            <!-- Contrôles Mobile (Burger & Raccourcis) -->
+            <div class="scp-mobile-bar-actions">
+                <button id="btn-mobile-paper-top" class="scp-ctrl-btn scp-btn-compact" title="Mode Papier" aria-label="Mode Papier">
+                    <span>📄</span>
+                </button>
+                <button id="btn-mobile-sound-top" class="scp-ctrl-btn scp-btn-compact" title="Activer / Couper l'audio" aria-label="Audio">
+                    <span>🔊</span>
+                </button>
+                <button id="btn-nav-toggle" class="scp-nav-toggle" aria-label="Ouvrir le menu de navigation" aria-expanded="false">
+                    <span class="toggle-bar"></span>
+                    <span class="toggle-bar"></span>
+                    <span class="toggle-bar"></span>
                 </button>
             </div>
         </div>
+
+        <!-- Tiroir de navigation Mobile (Drawer) -->
+        <div id="mobile-menu-drawer" class="mobile-drawer" aria-hidden="true">
+            <div class="mobile-drawer-header">
+                <div class="mobile-drawer-tag">
+                    <span class="brand-dot"></span>
+                    <span>SESSION SEC-TWIN // MENU</span>
+                </div>
+                <button id="btn-mobile-close" class="mobile-close-btn" aria-label="Fermer le menu">&times;</button>
+            </div>
+
+            <ul class="mobile-nav-links">
+                <li><a href="#dossier-agent" class="mobile-nav-link"><span class="m-num">01.</span> Profil & Historique</a></li>
+                <li><a href="#containment" class="mobile-nav-link"><span class="m-num">02.</span> Systèmes Déployés</a></li>
+                <li><a href="#clearances" class="mobile-nav-link"><span class="m-num">03.</span> 10 Certifications</a></li>
+                <li><a href="#protocols" class="mobile-nav-link"><span class="m-num">04.</span> Protocoles & Stacks</a></li>
+                <li><a href="#comms" class="mobile-nav-link"><span class="m-num">05.</span> Liaison Directe</a></li>
+            </ul>
+
+            <div class="mobile-drawer-actions">
+                <button id="btn-mobile-declassify" class="scp-ctrl-btn mobile-action-btn">
+                    <span>🔓</span> Déclassifier Tout
+                </button>
+                <button id="btn-mobile-print" class="scp-ctrl-btn mobile-action-btn">
+                    <span>🖨️</span> Exporter CV (PDF)
+                </button>
+            </div>
+
+            <div class="mobile-drawer-footer">
+                <p>DJEAN-BI GOORE Jules Euloge &bull; ESATIC L2 TWIN</p>
+                <p class="mobile-version-tag">STATION SÉCURISÉE v2.6 MOBILE-READY</p>
+            </div>
+        </div>
+        <div id="mobile-drawer-backdrop" class="mobile-drawer-backdrop"></div>
     </nav>
 
     <!-- En-tête : Terminal Central de Confinement (Hero) -->
@@ -64,7 +115,10 @@
                     <span class="dot-indicator dot-yellow"></span>
                     <span class="dot-indicator dot-green"></span>
                 </div>
-                <span>DOSSIER DÉCLASSIFIÉ #ESATIC-2026-TWIN // ABIDJAN</span>
+                <span class="terminal-header-title">
+                    <span class="title-full">DOSSIER DÉCLASSIFIÉ #ESATIC-2026-TWIN // ABIDJAN</span>
+                    <span class="title-short">DOSSIER #ESATIC-2026</span>
+                </span>
                 <span class="status-pill-live">● EN SERVICE</span>
             </div>
 
@@ -89,7 +143,7 @@
                             Titulaire d'un <span class="redacted" title="Cliquer pour déclassifier">Baccalauréat Scientifique Série D (Promotion 2025)</span>, il conçoit des systèmes capables de <span class="redacted" title="Cliquer pour déclassifier">résoudre la préparation aux examens ivoiriens, chiffrer des données sensibles</span> et automatiser des concours d'excellence.
                         </p>
                         <p style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--neon-amber);">
-                            &gt; CONSEIL : Cliquez sur les barres noires <span class="redacted">[CENSURÉ]</span> ou utilisez la console ci-dessous.
+                            &gt; CONSEIL : Touchez ou cliquez sur les barres noires <span class="redacted">[CENSURÉ]</span> ou testez le terminal ci-dessous.
                         </p>
                     </div>
                 </div>

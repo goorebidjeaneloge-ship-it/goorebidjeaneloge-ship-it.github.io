@@ -38,42 +38,78 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const btnDeclassifyAll = document.getElementById('btn-declassify-all');
-    if (btnDeclassifyAll) {
-        btnDeclassifyAll.addEventListener('click', () => {
-            document.body.classList.toggle('all-declassified');
-            const isAllOpen = document.body.classList.contains('all-declassified');
-            if (isAllOpen) {
-                btnDeclassifyAll.innerHTML = `<span>🔓</span> Tout Déclassifié`;
+    const btnMobileDeclassify = document.getElementById('btn-mobile-declassify');
+
+    function toggleDeclassification() {
+        document.body.classList.toggle('all-declassified');
+        const isAllOpen = document.body.classList.contains('all-declassified');
+        if (isAllOpen) {
+            if (btnDeclassifyAll) {
+                btnDeclassifyAll.innerHTML = `<span>🔓</span> <span class="btn-text">Tout Déclassifié</span>`;
                 btnDeclassifyAll.style.borderColor = 'var(--neon-cyan)';
                 btnDeclassifyAll.style.color = 'var(--neon-cyan)';
-                playAccessGrantedSound();
-            } else {
-                btnDeclassifyAll.innerHTML = `<span>🔒</span> Rétablir Censure`;
+            }
+            if (btnMobileDeclassify) {
+                btnMobileDeclassify.innerHTML = `<span>🔓</span> Censure Levée`;
+                btnMobileDeclassify.style.borderColor = 'var(--neon-cyan)';
+                btnMobileDeclassify.style.color = 'var(--neon-cyan)';
+            }
+            playAccessGrantedSound();
+        } else {
+            if (btnDeclassifyAll) {
+                btnDeclassifyAll.innerHTML = `<span>🔒</span> <span class="btn-text">Rétablir Censure</span>`;
                 btnDeclassifyAll.style.borderColor = 'var(--border-subtle)';
                 btnDeclassifyAll.style.color = 'var(--text-main)';
-                playTerminalKeySound(420);
             }
-        });
+            if (btnMobileDeclassify) {
+                btnMobileDeclassify.innerHTML = `<span>🔓</span> Déclassifier Tout`;
+                btnMobileDeclassify.style.borderColor = 'var(--border-subtle)';
+                btnMobileDeclassify.style.color = 'var(--text-main)';
+            }
+            playTerminalKeySound(420);
+        }
     }
+
+    if (btnDeclassifyAll) btnDeclassifyAll.addEventListener('click', toggleDeclassification);
+    if (btnMobileDeclassify) btnMobileDeclassify.addEventListener('click', () => {
+        toggleDeclassification();
+        closeMobileDrawer();
+    });
 
     /* --- 4. SWITCH MODE RAPPORT CLAIR & IMPRESSION / CV --- */
     const btnPaperMode = document.getElementById('btn-paper-mode');
-    if (btnPaperMode) {
-        btnPaperMode.addEventListener('click', () => {
-            document.body.classList.toggle('mode-paper');
-            const isPaper = document.body.classList.contains('mode-paper');
-            btnPaperMode.innerHTML = isPaper ? `<span>📄</span> Mode Papier` : `<span>🖥️</span> Mode Sombre`;
-            playTerminalKeySound(550);
-        });
+    const btnMobilePaperTop = document.getElementById('btn-mobile-paper-top');
+
+    function togglePaperMode() {
+        document.body.classList.toggle('mode-paper');
+        const isPaper = document.body.classList.contains('mode-paper');
+        if (btnPaperMode) {
+            btnPaperMode.innerHTML = isPaper ? `<span>🖥️</span> <span class="btn-text">Mode Sombre</span>` : `<span>📄</span> <span class="btn-text">Mode Papier</span>`;
+        }
+        if (btnMobilePaperTop) {
+            btnMobilePaperTop.innerHTML = isPaper ? `<span>🖥️</span>` : `<span>📄</span>`;
+            btnMobilePaperTop.title = isPaper ? "Passer en mode sombre" : "Passer en mode papier";
+            btnMobilePaperTop.setAttribute('aria-label', isPaper ? "Passer en mode sombre" : "Passer en mode papier");
+        }
+        playTerminalKeySound(550);
     }
 
+    if (btnPaperMode) btnPaperMode.addEventListener('click', togglePaperMode);
+    if (btnMobilePaperTop) btnMobilePaperTop.addEventListener('click', togglePaperMode);
+
     const btnPrintCv = document.getElementById('btn-print-cv');
-    if (btnPrintCv) {
-        btnPrintCv.addEventListener('click', () => {
-            playTerminalKeySound(800);
-            window.print();
-        });
+    const btnMobilePrint = document.getElementById('btn-mobile-print');
+
+    function triggerPrintCv() {
+        playTerminalKeySound(800);
+        window.print();
     }
+
+    if (btnPrintCv) btnPrintCv.addEventListener('click', triggerPrintCv);
+    if (btnMobilePrint) btnMobilePrint.addEventListener('click', () => {
+        closeMobileDrawer();
+        triggerPrintCv();
+    });
 
     /* --- 5. MINI TERMINAL CLI INTERACTIF --- */
     const cliInput = document.getElementById('cli-input');
@@ -221,22 +257,117 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const btnSound = document.getElementById('btn-scp-sound');
-    if (btnSound) {
-        btnSound.addEventListener('click', () => {
-            initAudio();
-            isSoundMuted = !isSoundMuted;
-            if (!isSoundMuted) {
-                btnSound.innerHTML = `<span>🔊</span> Audio Actif`;
+    const btnMobileSoundTop = document.getElementById('btn-mobile-sound-top');
+
+    function toggleSound() {
+        initAudio();
+        isSoundMuted = !isSoundMuted;
+        if (!isSoundMuted) {
+            if (btnSound) {
+                btnSound.innerHTML = `<span>🔊</span> <span class="btn-text">Audio Actif</span>`;
                 btnSound.style.borderColor = 'var(--neon-green)';
-                playAccessGrantedSound();
-            } else {
-                btnSound.innerHTML = `<span>🔇</span> Audio Muet`;
+            }
+            if (btnMobileSoundTop) {
+                btnMobileSoundTop.innerHTML = `<span>🔊</span>`;
+                btnMobileSoundTop.style.borderColor = 'var(--neon-green)';
+                btnMobileSoundTop.title = "Couper l'audio";
+                btnMobileSoundTop.setAttribute('aria-label', "Couper l'audio");
+            }
+            playAccessGrantedSound();
+        } else {
+            if (btnSound) {
+                btnSound.innerHTML = `<span>🔇</span> <span class="btn-text">Audio Muet</span>`;
                 btnSound.style.borderColor = 'var(--border-subtle)';
+            }
+            if (btnMobileSoundTop) {
+                btnMobileSoundTop.innerHTML = `<span>🔇</span>`;
+                btnMobileSoundTop.style.borderColor = 'var(--border-subtle)';
+                btnMobileSoundTop.title = "Activer l'audio";
+                btnMobileSoundTop.setAttribute('aria-label', "Activer l'audio");
+            }
+        }
+    }
+
+    if (btnSound) btnSound.addEventListener('click', toggleSound);
+    if (btnMobileSoundTop) btnMobileSoundTop.addEventListener('click', toggleSound);
+
+    /* --- 8. GESTION DU MENU MOBILE (DRAWER) & NAVIGATION TACTILE --- */
+    const navToggle = document.getElementById('btn-nav-toggle');
+    const mobileDrawer = document.getElementById('mobile-menu-drawer');
+    const mobileBackdrop = document.getElementById('mobile-drawer-backdrop');
+    const btnMobileClose = document.getElementById('btn-mobile-close');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+    function openMobileDrawer() {
+        if (!mobileDrawer) return;
+        mobileDrawer.classList.add('open');
+        mobileDrawer.setAttribute('aria-hidden', 'false');
+        if (mobileBackdrop) mobileBackdrop.classList.add('active');
+        if (navToggle) {
+            navToggle.classList.add('is-active');
+            navToggle.setAttribute('aria-expanded', 'true');
+        }
+        document.body.style.overflow = 'hidden';
+        playTerminalKeySound(520);
+    }
+
+    function closeMobileDrawer() {
+        if (!mobileDrawer) return;
+        mobileDrawer.classList.remove('open');
+        mobileDrawer.setAttribute('aria-hidden', 'true');
+        if (mobileBackdrop) mobileBackdrop.classList.remove('active');
+        if (navToggle) {
+            navToggle.classList.remove('is-active');
+            navToggle.setAttribute('aria-expanded', 'false');
+        }
+        document.body.style.overflow = '';
+    }
+
+    // Rendre closeMobileDrawer accessible au scope englobant
+    window.closeMobileDrawer = closeMobileDrawer;
+
+    if (navToggle) {
+        navToggle.addEventListener('click', () => {
+            const isOpen = mobileDrawer && mobileDrawer.classList.contains('open');
+            if (isOpen) {
+                closeMobileDrawer();
+                playTerminalKeySound(380);
+            } else {
+                openMobileDrawer();
             }
         });
     }
 
-    document.querySelectorAll('.btn-scp, .scp-nav-link').forEach(btn => {
+    if (btnMobileClose) {
+        btnMobileClose.addEventListener('click', () => {
+            closeMobileDrawer();
+            playTerminalKeySound(380);
+        });
+    }
+
+    if (mobileBackdrop) {
+        mobileBackdrop.addEventListener('click', () => {
+            closeMobileDrawer();
+            playTerminalKeySound(380);
+        });
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mobileDrawer && mobileDrawer.classList.contains('open')) {
+            closeMobileDrawer();
+            playTerminalKeySound(380);
+        }
+    });
+
+    mobileNavLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            closeMobileDrawer();
+            playTerminalKeySound(650);
+        });
+    });
+
+    /* --- 9. RETOURS SONORES SUR LES INTERACTION TACTILES/CLICS --- */
+    document.querySelectorAll('.btn-scp, .scp-nav-link, .comm-link-btn, .cli-chip, .clearance-card').forEach(btn => {
         btn.addEventListener('click', () => playTerminalKeySound(650));
     });
 });
